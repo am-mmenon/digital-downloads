@@ -1,0 +1,16 @@
+﻿@model IEnumerable<DigitalDownloads.Core.Models.Product>
+@{
+    ViewData["Title"] = "Digital Products";
+}
+
+<h2>Digital Products</h2>
+
+<form asp-action="CreateCheckoutSession" asp-controller="Payments" method="post">
+    <select name="productId">
+        @foreach (var p in Model)
+        {
+            <option value="@p.Id">@p.Name - @p.Price</option>
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">Buy Now</button>
+</form>
